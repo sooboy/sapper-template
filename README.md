@@ -1,4 +1,4 @@
-npx degit "sooboy/sapper-template#rollup" my-app
+npx degit "sooboy/sapper-template" my-app
 
 
 
