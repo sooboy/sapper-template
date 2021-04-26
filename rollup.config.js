@@ -23,20 +23,6 @@ const onwarn = (warning, onwarn) =>
 	warning.code === "THIS_IS_UNDEFINED" ||
 	onwarn(warning);
 
-const postcssOptions = (extract) => ({
-	extensions: [".scss"],
-	extract: extract ? "smui.css" : false,
-	minimize: true,
-	use: [
-		[
-			"sass",
-			{
-				includePaths: ["./src/theme", "./node_modules"],
-			},
-		],
-	],
-});
-
 export default {
 	client: {
 		input: config.client.input().replace(/\.js$/, ".ts"),
@@ -56,7 +42,6 @@ export default {
 					hydratable: true,
 				},
 			}),
-			postcss(postcssOptions(true)),
 			url({
 				sourceDir: path.resolve(__dirname, "src/node_modules/images"),
 				publicPath: "/client/",
@@ -122,7 +107,6 @@ export default {
 				},
 				emitCss: false,
 			}),
-			postcss(postcssOptions(false)),
 			url({
 				sourceDir: path.resolve(__dirname, "src/node_modules/images"),
 				publicPath: "/client/",
